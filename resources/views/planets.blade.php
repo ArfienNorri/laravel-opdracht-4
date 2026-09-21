@@ -8,12 +8,14 @@
     <h1>Planeten</h1>
 
     <ul>
-        @foreach ($planets as $planet)
+        @forelse ($planets as $planet)
             <li>
                 <strong>{{ $planet['name'] }}</strong>
                 <p>{{ $planet['description'] }}</p>
             </li>
-        @endforeach
+        @empty
+            <li>Geen planeet gevonden met deze naam.</li>
+        @endforelse
     </ul>
 </body>
 </html>

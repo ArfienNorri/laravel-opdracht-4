@@ -26,5 +26,11 @@ Route::get('/planets', function () {
         ],
     ];
 
-    return view('planets', ['planets' => $planets]);
+    $collection = collect($planets);
+
+    if (request()->has('planeet')) {
+        $collection = $collection->where('name', ucfirst(request('planeet')));
+    }
+
+    return view('planets', ['planets' => $collection]);
 });
